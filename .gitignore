@@ -107,4 +107,10 @@ ipynb/
 run_archive/
 code_archive/
 games/archive/
+lib/
+bin/
+pip-selfcheck.json
+pyvenv.cfg
+.vscode/
+.DS_Store
 *.pyc
