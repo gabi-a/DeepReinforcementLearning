@@ -3,7 +3,7 @@ import logging
 
 class Game:
 
-	def __init__(self):		
+	def __init__(self):
 		self.currentPlayer = 1
 		self.gameState = GameState(np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], dtype=np.int), 1)
 		self.actionSpace = np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], dtype=np.int)
@@ -143,7 +143,7 @@ class GameState():
 
 	def _allowedActions(self):
 		allowed = []
-		for i in xrange(len(self.board)):
+		for i in range(len(self.board)):
 			if i >= len(self.board) - 7:
 				if self.board[i]==0:
 					allowed.append(i)
@@ -207,7 +207,7 @@ class GameState():
 	def takeAction(self, action):
 		newBoard = np.array(self.board)
 		newBoard[action]=self.playerTurn
-		
+
 		newState = GameState(newBoard, -self.playerTurn)
 
 		value = 0
@@ -217,7 +217,7 @@ class GameState():
 			value = newState.value[0]
 			done = 1
 
-		return (newState, value, done) 
+		return (newState, value, done)
 
 
 

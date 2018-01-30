@@ -77,17 +77,17 @@ class Gen_Model():
 					filter = (filter + 1) % s[3]
 
 			except:
-	
+
 				try:
 					fig = plt.figure(figsize=(3, len(x)))  # width, height in inches
-					for i in xrange(len(x)):
+					for i in range(len(x)):
 						sub = fig.add_subplot(len(x), 1, i + 1)
 						if i == 0:
 							clim = (0,2)
 						else:
 							clim = (0, 2)
 						sub.imshow([x[i]], cmap='coolwarm', clim=clim,aspect="auto")
-						
+
 					plt.show()
 
 				except:
@@ -95,14 +95,14 @@ class Gen_Model():
 						fig = plt.figure(figsize=(3, 3))  # width, height in inches
 						sub = fig.add_subplot(1, 1, 1)
 						sub.imshow(x[0], cmap='coolwarm', clim=(-1, 1),aspect="auto")
-						
+
 						plt.show()
 
 					except:
 						pass
 
 			plt.show()
-				
+
 		lg.logger_model.info('------------------')
 
 
@@ -233,13 +233,13 @@ class Residual_CNN(Gen_Model):
 
 		model = Model(inputs=[main_input], outputs=[vh, ph])
 		model.compile(loss={'value_head': 'mean_squared_error', 'policy_head': softmax_cross_entropy_with_logits},
-			optimizer=SGD(lr=self.learning_rate, momentum = config.MOMENTUM),	
-			loss_weights={'value_head': 0.5, 'policy_head': 0.5}	
+			optimizer=SGD(lr=self.learning_rate, momentum = config.MOMENTUM),
+			loss_weights={'value_head': 0.5, 'policy_head': 0.5}
 			)
 
 		return model
 
 	def convertToModelInput(self, state):
 		inputToModel =  state.binary #np.append(state.binary, [(state.playerTurn + 1)/2] * self.input_dim[1] * self.input_dim[2])
-		inputToModel = np.reshape(inputToModel, self.input_dim) 
+		inputToModel = np.reshape(inputToModel, self.input_dim)
 		return (inputToModel)

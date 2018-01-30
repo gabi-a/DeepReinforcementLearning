@@ -3,7 +3,7 @@ import logging
 
 class Game:
 
-	def __init__(self):		
+	def __init__(self):
 		self.currentPlayer = 1
 		self.gameState = GameState(np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], dtype=np.int), 1)
 		self.actionSpace = np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], dtype=np.int)
@@ -31,7 +31,7 @@ class Game:
 		currentBoard = state.board
 		currentAV = actionValues
 
-		for n in xrange(5):
+		for n in range(5):
 			currentBoard = np.array([
 						  currentBoard[20], currentBoard[15],currentBoard[10], currentBoard[5],currentBoard[0]
 						, currentBoard[21], currentBoard[16],currentBoard[11], currentBoard[6],currentBoard[1]
@@ -48,7 +48,7 @@ class Game:
 						, currentAV[24], currentAV[19],currentAV[14], currentAV[9],currentAV[4]
 
 						])
-			
+
 			identities.append((GameState(currentBoard, state.playerTurn), currentAV))
 
 		currentBoard = np.array([
@@ -68,7 +68,7 @@ class Game:
 
 					])
 
-		for n in xrange(5):
+		for n in range(5):
 			currentBoard = np.array([
 						  currentBoard[20], currentBoard[15],currentBoard[10], currentBoard[5],currentBoard[0]
 						, currentBoard[21], currentBoard[16],currentBoard[11], currentBoard[6],currentBoard[1]
@@ -222,7 +222,7 @@ class GameState():
 					tilenum = tilenum + 1
 				if checkFlag == 0:
 					currentPlayerPoints = currentPlayerPoints + points
-					
+
 		opponentPlayerPoints = 0
 		for squareType in self.winners:
 			points = squareType['points']
@@ -260,7 +260,7 @@ class GameState():
 			value = newState.value[0]
 			done = 1
 
-		return (newState, value, done) 
+		return (newState, value, done)
 
 	def render(self, logger):
 		for r in range(5):
